@@ -70,17 +70,22 @@ function draw(){
 function mouseClicked () {
 
 
-	if (characterPositionX >= 400 && characterPositionY >= 480){
+	if (characterPositionY >= 480){
 		characterPositionX -= 10;
 		characterPositionY -= 10;
 	}
 
 
-	else if (characterPositionY < 480 && characterPositionY >= 350){
+	else if (characterPositionY >= 350){
 		characterPositionY -= 10;
 	}
 
-	else  {
+	else  if (characterPositionY == 300) {
+		characterPositionX = characterPositionX;
+		characterPositionY = characterPositionY;
+	}
+
+	else{
 		characterPositionX += 5;
 		characterPositionY -= 3;
 	}
