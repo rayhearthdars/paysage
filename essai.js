@@ -45,7 +45,7 @@ function setup(){
 	createCanvas(800, 600);
 	variationclouds1x = 0;
 	variationClouds2x = 300;
-	translateCharacterX = 520;
+	characterPositionX = 580;
 	characterPositionY = 600; 
 	characterScale = 1;
 }
@@ -68,16 +68,27 @@ function draw(){
 
 
 function mouseClicked () {
-	fill(250, 250, 250);
-	translateCharacterX -= 10;
-	if (translateCharacterX <= 400){
-		translateCharacterX = 400;
+
+
+	if (characterPositionX >= 400 && characterPositionY >= 480){
+		characterPositionX -= 10;
+		characterPositionY -= 10;
 	}
-	characterPositionY -= 10;
-	if (characterPositionY <= 400){
-		characterPositionY = 400;
+
+
+	else if (characterPositionY < 480 && characterPositionY >= 350){
+		characterPositionY -= 10;
 	}
-	characterScale = constrain(characterScale, 0.2, 1);
+
+	else  {
+		characterPositionX += 5;
+		characterPositionY -= 3;
+	}
+
+
+	
+	
+	characterScale = constrain(characterScale, 0, 1);
 	characterScale -= 0.01;
 }
 
@@ -199,10 +210,10 @@ function drawBigTree(){
 function scaleCharacterSmaller(){
 
 	push();
-	translate(translateCharacterX, characterPositionY)
+	translate(characterPositionX, characterPositionY)
 
 	push();
-	scale(1 * characterScale, 1 * characterScale);
+	scale(0.9 * characterScale, 0.9 * characterScale);
 
 	//draw character (à revoir)
 	push();
