@@ -43,7 +43,7 @@ let cloud1 = {
 	height: 100
 }
 
-let x1, x2, x3, characterPosition, y1;
+let variationclouds1x, variationClouds2x, translateCharacterX, characterPosition, translateCharacterY;
 
 function setup(){
 	createCanvas(800, 600);
@@ -218,7 +218,7 @@ function mouseClicked () {
 
 	fill(250, 250, 250);
 
-	translateCharacterX = constrain(x3, 400, 520);
+	translateCharacterX = constrain(translateCharacterX, 400, 520);
 	translateCharacterX -= 10;
 	if (translateCharacterX <= 400){
 		translateCharacterX = 400;
@@ -229,7 +229,7 @@ function mouseClicked () {
 		translateCharacterY = 400;
 	}
 
-	characterPosition = constrain(characterPosition, 0, 1.1);
+	characterPosition = constrain(characterPosition, 0, 1);
 
 	
 
