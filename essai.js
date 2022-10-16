@@ -43,13 +43,15 @@ let cloud1 = {
 	height: 100
 }
 
+let x1, x2, x3, characterPosition, y1;
+
 function setup(){
 	createCanvas(800, 600);
-	x1 = 0;
-	x2 = 300;
-	x3 = 520; //520
-	y1 = 600; //600
-	x4 = 1.1;
+	variationclouds1x = 0;
+	variationClouds2x = 300;
+	translateCharacterX = 520;
+	translateCharacterY = 600; 
+	characterPosition = 1;
 
 }
 
@@ -59,18 +61,18 @@ function draw(){
 	background(149, 206, 208);
 
 //draw some clouds
-	x2 =  x2 + 1;
-	constrain(x2, 0, 800);
-	if (x2 === 800){
-		x2 = - 300;
+	variationClouds2x +=  1;
+	constrain(variationClouds2x, 0, 800);
+	if (variationClouds2x === 800){
+		variationClouds2x = - 300;
 	}
 	fill(255, 255, 255);
-	ellipse(x2, cloud1.y + 85, cloud1.width, cloud1.height);
-	ellipse(x2 + 50, cloud1.y + 85, cloud1.width - 25, cloud1.height - 25);
-	ellipse(x2 + 100, cloud1.y + 85, cloud1.width - 50, cloud1.height - 50);
-	ellipse(x2 + 250, cloud1.y - 50, cloud1.width, cloud1.height);
-	ellipse(x2 + 300, cloud1.y - 50, cloud1.width - 25, cloud1.height - 25);
-	ellipse(x2 + 350, cloud1.y - 50, cloud1.width - 50, cloud1.height - 50);
+	ellipse(variationClouds2x, cloud1.y + 85, cloud1.width, cloud1.height);
+	ellipse(variationClouds2x + 50, cloud1.y + 85, cloud1.width - 25, cloud1.height - 25);
+	ellipse(variationClouds2x + 100, cloud1.y + 85, cloud1.width - 50, cloud1.height - 50);
+	ellipse(variationClouds2x + 250, cloud1.y - 50, cloud1.width, cloud1.height);
+	ellipse(variationClouds2x + 300, cloud1.y - 50, cloud1.width - 25, cloud1.height - 25);
+	ellipse(variationClouds2x + 350, cloud1.y - 50, cloud1.width - 50, cloud1.height - 50);
 
 //draw second mountain on the left
 	fill(17, 48, 16);
@@ -85,17 +87,17 @@ function draw(){
 
 //draw clouds
 	fill(255, 255, 255);
-	x1 =  x1 + 1;
+	variationclouds1x += 1;
 	constrain(x, 0, 800);
-	if (x1 === 800){
-		x1 = 0;
+	if (variationclouds1x === 800){
+		variationclouds1x = 0;
 	}
-	ellipse(x1, cloud1.y, cloud1.width, cloud1.height);
-	ellipse(x1 + 50, cloud1.y, cloud1.width - 10, cloud1.height - 10);
-	ellipse(x1 + 100, cloud1.y, cloud1.width - 30, cloud1.height - 30);
-	ellipse(x1 - 100, cloud1.y + 150, cloud1.width + 30, cloud1.height + 30);
-	ellipse(x1 - 50, cloud1.y + 150, cloud1.width + 15, cloud1.height + 15);
-	ellipse(x1, cloud1.y + 150, cloud1.width, cloud1.height);
+	ellipse(variationclouds1x, cloud1.y, cloud1.width, cloud1.height);
+	ellipse(variationclouds1x + 50, cloud1.y, cloud1.width - 10, cloud1.height - 10);
+	ellipse(variationclouds1x + 100, cloud1.y, cloud1.width - 30, cloud1.height - 30);
+	ellipse(variationclouds1x - 100, cloud1.y + 150, cloud1.width + 30, cloud1.height + 30);
+	ellipse(variationclouds1x - 50, cloud1.y + 150, cloud1.width + 15, cloud1.height + 15);
+	ellipse(variationclouds1x, cloud1.y + 150, cloud1.width, cloud1.height);
 
 //draw first mountain on the left
 	fill(36, 100, 34);
@@ -167,25 +169,26 @@ function draw(){
 
 
 	//scale person smaller as he walks (à revoir)
-	scale(0.7 * x4);
+	push();
+	scale(0.7 * characterPosition);
 
 	//draw character (à revoir)
 	push();
 	//head
 	fill(102, 50, 0);
-	ellipse(x3, y1, 20, 25);
+	ellipse(translateCharacterX, translateCharacterY, 20, 25);
 	//neck
-	ellipse(x3, y1 + 12, 3, 10);
+	ellipse(translateCharacterX, translateCharacterY + 12, 3, 10);
 	//trunk
 	fill(129, 73, 144);
-	ellipse(x3, y1 + 40, 16, 50);
+	ellipse(translateCharacterX, translateCharacterY + 40, 16, 50);
 	pop();
 
 	push();
 	//right arm
 	fill(102, 50, 0);
 	ellipseMode(CENTER);
-	translate(x3 - 100, y1 + 45);
+	translate(translateCharacterX - 100, translateCharacterY + 45);
 	rotate(75);
 	ellipse(109, 40, 7, 50);
 	//left arm
@@ -195,7 +198,7 @@ function draw(){
 
 	push();
 	fill(0, 0, 0);
-	translate(x3 - 100, y1 + 45);
+	translate(translateCharacterX - 100, translateCharacterY + 45);
 	//right leg
 	push();
 	rotate(25);
@@ -207,7 +210,7 @@ function draw(){
 	rotate(-50);
 	rect(95, -15, 10, 60);
 	pop();
-	
+	pop();
 
 }
 
@@ -215,23 +218,18 @@ function mouseClicked () {
 
 	fill(250, 250, 250);
 
-	x3 = constrain(x3, 400, 520);
-	x3 -= 10;
-	if (x3 <= 400){
-		x3 = 400;
+	translateCharacterX = constrain(x3, 400, 520);
+	translateCharacterX -= 10;
+	if (translateCharacterX <= 400){
+		translateCharacterX = 400;
 	}
-	y1 = constrain(y1, 400, 600);	
-	y1 -= 10;
-	if (y1 <= 400){
-		y1 = 400;
+	translateCharacterY = constrain(translateCharacterY, 400, 600);	
+	translateCharacterY -= 10;
+	if (translateCharacterY <= 400){
+		translateCharacterY = 400;
 	}
 
-	x4 = constrain(x4, 0, 1.1);
-	while (x4 <= 0.5){
-		x4 -= 0.1;
-	}
-	
-
+	characterPosition = constrain(characterPosition, 0, 1.1);
 
 	
 
