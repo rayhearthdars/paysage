@@ -230,6 +230,7 @@ function mouseClicked () {
 	}
 
 	characterPosition = constrain(characterPosition, 0, 1);
+	characterPosition -= 0.01;
 
 	
 
