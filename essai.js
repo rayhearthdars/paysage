@@ -202,7 +202,7 @@ function scaleCharacterSmaller(){
 	translate(translateCharacterX, characterPositionY)
 
 	push();
-	scale(1 * characterScale);
+	scale(1 * characterScale, 1 * characterScale);
 
 	//draw character (à revoir)
 	push();
