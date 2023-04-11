@@ -2,7 +2,9 @@
 
 ## Project Description
 
-This was an exercise in using the p5.js library. It was my first javascript project. I created a landscape, with clouds going by, and a small stylized human that 
+This was an exercise in using the p5.js library. Here is a link to it: https://p5js.org/
+
+I created a landscape, with clouds going by, and a small stylized human that 
 moves along the path on mouse click and slowly becomes smaller the farther he goes.
 
 It was difficult to keep track of every coordinate.
